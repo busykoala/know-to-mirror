@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Busykoala</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="description" content="How to for mirroring with different tools.">
+    <meta name="author" content="Matthias Osswald">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="avatar.png">
+  </head>
+
+  <body>
+
+
+    <div class="header"></div>
+    <div class="text-section">
+      <div class="scream-image"></div>
+      <p class="scream-image-credits">
+        Photo by&nbsp;<a href="https://unsplash.com/@ryansnaadt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ryan Snaadt</a>&nbsp;on&nbsp;<a href="https://unsplash.com/s/photos/scream?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      <p/>
+
+      <h1>Know to mirror</h1>
+      <p>
+        Do you know the feeling when you have to configure each and every tool
+        in your new project to use a mirror? This page is an attempt to make
+        your life easier with a collection of "how to mirror" for different tools.
+        <br><br>
+        💡 To suggest changes/additions
+        <a href="https://github.com/busykoala/know-to-mirror">make a PR here.</a>
+      </p><br>
+
+      <button type="button" class="collapsible">yarn</button>
+      <div class="content">
+        <p class="code">
+          # .npmrc<br>
+          registry=https://busykoala.io/mirror/<br>
+          //busykoala.io/mirror/:_auth=TOKEN<br>
+          //busykoala.io/mirror/:always-auth=true
+        </p>
+      </div>
+
+      <button type="button" class="collapsible">npm</button>
+      <div class="content">
+        <p class="code">
+          # .npmrc<br>
+          registry=https://busykoala.io<br>
+          _auth=TOKEN<br>
+          always-auth=true
+        </p>
+      </div>
+
+      <button type="button" class="collapsible">pip</button>
+      <div class="content">
+        <p class="code">
+          # /etc/pip.conf<br>
+          [global]<br>
+          index=https://busykoala.io/pypi<br>
+          index-url=https://busykoala.io/simple<br>
+          trusted-host=busykoala.io
+        </p>
+      </div>
+
+      <button type="button" class="collapsible">poetry</button>
+      <div class="content">
+        <p class="code">
+          # pyproject.toml<br>
+          [[tool.poetry.source]]<br>
+          name = "foo"<br>
+          url = "https://busykoala.io/simple/"<br>
+          default = true
+        </p>
+      </div>
+
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
